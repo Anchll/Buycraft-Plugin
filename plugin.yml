@@ -1,10 +1,10 @@
 name: Buycraft
 main: net.buycraft.Plugin
-version: 5.4
+version: 5.5
 author: Tebex Technologies Ltd
 website: http://buycraft.net
 commands:
    ec:
       usage: /<command>
    buycraft:
-      usage: /<command> <reload/forcecheck/secret>
+      usage: /<command> <reload/forcecheck/secret/verify>

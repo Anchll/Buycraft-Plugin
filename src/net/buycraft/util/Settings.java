@@ -57,6 +57,7 @@ public class Settings
 		defaultProperties.put("directPay", "false");
 		defaultProperties.put("directPayGateway", "paypal");
 		defaultProperties.put("buyCommand", "buy");
+		defaultProperties.put("includeIpVerification", "true");
 		
 		for (Entry<String, String> entry : defaultProperties.entrySet()) 
 		{

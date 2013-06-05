@@ -4,6 +4,7 @@ import net.buycraft.Plugin;
 import net.buycraft.tasks.AuthenticateTask;
 import net.buycraft.tasks.PackageCheckerTask;
 import net.buycraft.tasks.ReloadPackagesTask;
+import net.buycraft.tasks.VerificationTask;
 import net.buycraft.util.Chat;
 
 import org.bukkit.ChatColor;
@@ -23,6 +24,33 @@ public class BuycraftCommand
 	{
 		if(args.length > 0)
 		{
+			if(args[0].equalsIgnoreCase("verify"))
+			{
+				if(commandSender instanceof Player)
+				{
+					if(args.length == 2)
+					{
+						plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new VerificationTask((Player) commandSender, args[1]));
+					}
+					else
+					{
+						commandSender.sendMessage(Chat.header());
+						commandSender.sendMessage(Chat.seperator());
+						commandSender.sendMessage(Chat.seperator() + ChatColor.RED + "Please enter a verification code.");
+						commandSender.sendMessage(Chat.seperator());
+						commandSender.sendMessage(Chat.footer());
+						
+						return true;
+					}
+				}
+				else
+				{
+					commandSender.sendMessage("You cannot execute this command from the console.");
+					
+					return true;
+				}
+			}
+			
 			if(commandSender instanceof Player == false || commandSender.hasPermission("buycraft.admin") || commandSender.isOp())
 			{
 				if(args[0].equalsIgnoreCase("secret"))

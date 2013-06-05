@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -76,6 +78,22 @@ public class Api
 		apiCallParams.put("commands", commandsToDelete);
 		
 		call(apiCallParams);
+	}
+	
+	public JSONObject verificationAction(String ign, String code, InetSocketAddress inetSocketAddress)
+	{
+		HashMap<String, String> apiCallParams = new HashMap<String, String>();
+		
+		apiCallParams.put("action", "verify");
+		apiCallParams.put("code", code);
+		apiCallParams.put("ign", ign);
+		
+		if(plugin.getSettings().getBoolean("includeIpVerification"))
+		{
+			apiCallParams.put("ip", inetSocketAddress.getAddress().getHostAddress());
+		}
+		
+		return call(apiCallParams);
 	}
 	
 	private JSONObject call(HashMap<String, String> apiCallParams)

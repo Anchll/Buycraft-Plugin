@@ -42,6 +42,10 @@ Use of http://api.buycraft.net is only for this plugin and integrating Buycraft 
 
 ---- CHANGE LOG ------------------------------------------------------------
 	
+	Version 5.5
+	
+		- Support for the new Minecraft username verification system. Enable this setting from the Gateway settings page of your server panel.
+	
 	Version 5.4
 	
 		- Changing the /buy command is now a simple option in the settings file.
